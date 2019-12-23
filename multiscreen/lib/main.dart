@@ -2,10 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:multiscreen/model/models.dart';
 import 'package:multiscreen/provider/provider_ressouce.dart';
+import 'package:multiscreen/nextPage/NextPage.dart';
 
 void main() {
   runApp(
     MaterialApp(
+      routes: {
+        '/next':(context)=>NextPage(),
+        '':(context)=>MyApp(),
+      },
       title: '',
       theme: ThemeData(
         primarySwatch: Colors.blue,
@@ -46,7 +51,6 @@ class _MyAppState extends State<MyApp> {
                 decoration: InputDecoration(
                   labelText: 'Entre name',
                 ),
-                initialValue: '',
                 validator: (String value){
                   if(value.isEmpty){
                     return 'Entre name please';
@@ -62,7 +66,7 @@ class _MyAppState extends State<MyApp> {
                 decoration: InputDecoration(
                   labelText: 'Entre lastname',
                 ),
-                initialValue: '',
+               
                 validator: (String value){
                   if(value.isEmpty){
                     return 'Entre lastname please';
@@ -91,6 +95,28 @@ class _MyAppState extends State<MyApp> {
                       padding: EdgeInsets.symmetric(horizontal: 10.0),
                     ),
                     Text('add'),
+                    Icon(Icons.add),
+                     Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 10.0),
+                    ),
+                  ],
+                ),
+              ),
+
+              RawMaterialButton(
+               onPressed: () {
+                 Navigator.of(context).pushNamed('/next');
+               },
+                fillColor: Colors.blue,
+                shape: StadiumBorder(),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: <Widget>[
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 10.0),
+                    ),
+                    Text('List'),
+                    Icon(Icons.forward),
                      Padding(
                       padding: EdgeInsets.symmetric(horizontal: 10.0),
                     ),
